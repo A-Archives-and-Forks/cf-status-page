@@ -89,7 +89,7 @@ export async function notifyTelegram(env: ENV, monitor: App.MonitorConfig, opera
   payload.append('parse_mode', 'MarkdownV2');
   payload.append('text', text);
 
-  const telegramUrl = `https://api.telegram.org/bot${SECRET_TELEGRAM_API_TOKEN}/sendMessage`;
+  const telegramUrl = `https://api.telegram.org/bot${env.SECRET_TELEGRAM_API_TOKEN}/sendMessage`;
   return fetch(telegramUrl, {
     body: payload,
     method: 'POST'

@@ -3,6 +3,7 @@
 
   import config from '../../config.json';
   import { locations } from './locations';
+  const locationMap = locations as Record<string, string>;
 
   const classes = {
     green:
@@ -27,7 +28,7 @@
       <div class="text-xs font-light">
         checked
         {Math.round((Date.now() - kvMonitorsLastUpdate.time) / 1000)} sec ago (from
-        {locations[kvMonitorsLastUpdate.loc] || kvMonitorsLastUpdate.loc})
+        {locationMap[kvMonitorsLastUpdate.loc] || kvMonitorsLastUpdate.loc})
       </div>
     {/if}
     <!-- )} -->

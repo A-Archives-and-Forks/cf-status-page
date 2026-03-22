@@ -3,9 +3,10 @@
   export let avg: number;
 
   import { locations } from './locations';
+  const locationMap = locations as Record<string, string>;
 </script>
 
 <br />
 <small>
-  {locations[location] || location}: {avg}ms
+  {locationMap[location] || location}: {avg}ms
 </small>

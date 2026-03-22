@@ -16,7 +16,7 @@ function getDate() {
 
 export async function processCronTrigger(env: App.Platform['env']) {
   // Get Worker PoP and save it to monitorsStateMetadata
-  const checkLocation = await getCheckLocation();
+  const checkLocation = (await getCheckLocation()) ?? 'unknown';
   const checkDay = getDate();
 
   // Get monitors state from KV
@@ -47,7 +47,7 @@ export async function processCronTrigger(env: App.Platform['env']) {
       method: monitor.method || 'GET',
       redirect: monitor.followRedirect ? 'follow' : 'manual',
       headers: {
-        'User-Agent': config.settings.user_agent || 'cf-worker-status-page'
+        'User-Agent': 'cf-worker-status-page'
       }
     };
 
@@ -140,7 +140,7 @@ export async function processCronTrigger(env: App.Platform['env']) {
 
   // Save last update information
   monitorsState.lastUpdate.time = Date.now();
-  monitorsState.lastUpdate.loc = checkLocation;
+  monitorsState.lastUpdate.loc = checkLocation as string;
 
   // Save monitorsState to KV storage
   await setKVMonitors(env, monitorsState);
