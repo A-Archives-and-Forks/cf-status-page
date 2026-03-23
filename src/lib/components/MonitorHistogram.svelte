@@ -31,7 +31,7 @@
 <div class="flex flex-row items-center histogram">
   {#each Array.from(Array(config.settings.daysInHistogram).keys()) as daysBefore}
     <div class="hitbox tooltip">
-      <div class={`${styleByDih(daysBefore)['bg']} bar`} />
+      <div class={`${styleByDih(daysBefore)['bg']} bar`}></div>
       <div class="w-40 px-2 py-1 mt-2 -ml-20 text-xs text-center content left-1/2">
         {styleByDih(daysBefore)['dayInHistogram']}
         <br />

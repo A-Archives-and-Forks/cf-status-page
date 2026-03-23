@@ -3,17 +3,17 @@
   export let callback: (x: string) => void;
 
   let input = '';
-  function handleInput(event) {
-    if (event.target.value == '/') {
+  function handleInput(event: Event & { currentTarget: HTMLInputElement }) {
+    if ((event.target as HTMLInputElement).value == '/') {
       return;
     }
-    input = event.target.value;
-    callback(event.target.value);
+    input = (event.target as HTMLInputElement).value;
+    callback((event.target as HTMLInputElement).value);
   }
 
-  function handleKeyDown(event) {
+  function handleKeyDown(event: KeyboardEvent & { currentTarget: HTMLInputElement }) {
     if (event.keyCode === 27) {
-      event.target.blur();
+      (event.target as HTMLInputElement).blur();
     }
   }
 </script>

@@ -1,0 +1,10 @@
+name = "cf-svelte-ts"
+compatibility_date = "2025-11-17"
+compatibility_flags = [ "nodejs_compat" ]
+
+[[kv_namespaces]]
+binding = "KV_STAUS_PAGE"
+id = "<YOUR_KV_NAMESPACE_ID>"
+
+[triggers]
+crons = ["*/30 * * * *"]
